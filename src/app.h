@@ -56,6 +56,7 @@ extern BaseType_t g_higher_priority_task_woken;
 #define LPP_CHANNEL_TEMP 3			   // RAK1901
 #define LPP_CHANNEL_PRESS 4			   // RAK1902
 #define LPP_CHANNEL_LIGHT 5			   // RAK1903
+#define LPP_CHANNEL_TEMP_1WIRE 6
 
 extern WisCayenne g_solution_data;
 
@@ -66,5 +67,7 @@ bool init_press(void);
 void read_press(void);
 bool init_light(void);
 void read_light();
+bool init_onewire(void);
+void read_onewire(void);
 
 #endif

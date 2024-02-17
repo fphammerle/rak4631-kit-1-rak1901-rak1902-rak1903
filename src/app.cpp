@@ -37,6 +37,7 @@ bool has_rak1901 = false;
 bool has_rak1902 = false;
 /** flag for light sensor */
 bool has_rak1903 = false;
+bool has_onewire = false;
 
 /**
  * @brief Application specific setup functions
@@ -128,6 +129,14 @@ bool init_app(void)
 	{
 		read_light();
 	}
+
+	has_onewire = init_onewire();
+	if(!has_onewire) {
+		MYLOG("APP", "1WIRE error");
+	} else {
+		read_onewire();
+	}
+
 	return init_result;
 }
 
@@ -179,6 +188,9 @@ void app_event_handler(void)
 				{
 					// Read luminosity
 					read_light();
+				}
+				if(has_onewire) {
+					read_onewire();
 				}
 			}
 
